@@ -1,3 +1,4 @@
 # Emoji Classifier Project
 
-Grace Jiang – honk Shelly Wu
+Grace Jiang – honk
+Acelyn Choi
