@@ -1,4 +1,3 @@
 # Emoji Classifier Project
 
-Grace Jiang – honk
-Shelly Wu - Hii!
+Grace Jiang – honk Shelly Wu
