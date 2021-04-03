@@ -1,6 +1,6 @@
 # Emoji Classifier Project
 
-Grace Jiang – honk
+Grace Jiang
 Acelyn Choi
 Shelly Wu
 Aarushi Singh
