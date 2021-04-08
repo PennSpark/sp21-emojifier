@@ -1,14 +1,18 @@
 import os
 from app import app
 import urllib.request
-from flask import Flask, flash, request, redirect, url_for, render_template
+from flask import Flask, flash, request, redirect, url_for, render_template, Response, jsonify
 from werkzeug.utils import secure_filename
+from camera import VideoCamera
+# import cv2
 
 # ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 # def allowed_file(filename):
 # 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-	
+
+# app = Flask(__name__)
+
 @app.route('/')
 def upload_form():
 	return render_template('upload.html')
@@ -37,5 +41,21 @@ def display_image(filename):
 	#print('display_image filename: ' + filename)
 	return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()
+
+video_stream = VideoCamera()
+
+def gen(camera):
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(gen(video_stream),
+        mimetype='multipart/x-mixed-replace; boundary=frame')
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', debug=True,port="5000")
