@@ -21,6 +21,7 @@
 	{% if filename %}
 		<div>
 			<img src="{{ url_for('display_image', filename=filename) }}">
+			<p>{{ value }}</p>
 		</div>
 	{% endif %}
 	<form method="post" action="/" enctype="multipart/form-data">
@@ -38,6 +39,4 @@
 			<input class="inputLink" type="submit" value="Submit">
 		</p>
 	</form>
-
-	<img src="{{ url_for('video_feed') }}" />
 </body>

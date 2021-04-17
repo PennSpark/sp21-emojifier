@@ -1,4 +1,3 @@
-# from camera import VideoCamera
 import cv2
 
 class VideoCamera(object):
