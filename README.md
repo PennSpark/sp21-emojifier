@@ -1,9 +1,6 @@
 # Emoji Classifier Project
 
-Grace Jiang
-Acelyn Choi
-Shelly Wu
-Aarushi Singh
-Subin Kim
+Developers: Grace Jiang, Jerry Qin, Acelyn Choi, Shelly Wu, Aarushi Singh, Subin Kim, Aditya Gupta  
 
-git demo
+### Required Packages
+`pip install opencv-python`
