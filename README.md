@@ -4,7 +4,8 @@ Developers: Grace Jiang, Jerry Qin, Acelyn Choi, Shelly Wu, Aarushi Singh, Subin
 
 ### Required Packages
 `pip install opencv-python`
+
 `pip install tensorflow_text`
 
 ### Running Application
-`python main.py`
+`FLASK_APP=main.py FLASK_ENV=development flask run`
