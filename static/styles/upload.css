@@ -32,13 +32,11 @@ p {
 
 .btn-wrapper {
     cursor:pointer;
-    padding:12px 20px; 
+    padding: 12px 20px;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
-    width: 130px;
-    height: 30px;
 }
 
 #choose-img-btn-wrapper {
@@ -57,7 +55,8 @@ form {
 }
 
 #preview-image {
-    height: 240px;
+    max-height: 240px;
+    max-width: 720px;
     display: none;
 }
 
