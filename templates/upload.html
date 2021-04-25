@@ -24,28 +24,39 @@
         <br/>
 	{% endif %}
 	<form method="post" action="/" enctype="multipart/form-data">
-        <div>
-            <span id="choose-img-btn-wrapper" class="btn-wrapper">
-                <input type="file" name="file" autocomplete="off" id="choose-img-btn" onchange="previewImage(event)" hidden>
-                <label for="choose-img-btn">Choose File</label>
-            </span>
-            <span id="submit-btn-wrapper" class="btn-wrapper">
-                <input class="inputLink" type="submit" id="submit-btn" hidden/>
-                <label for="submit-btn">Submit</label>
-            </span>    
-        </div>
+        <span id="choose-img-btn-wrapper" class="btn-wrapper">
+            <input type="file" name="file" autocomplete="off" id="choose-img-btn" onchange="previewImage(event)" hidden>
+            <label for="choose-img-btn">Choose File</label>
+        </span>
+        <br/><br/>
     
         <div>
-            <img style="height:25vh;display:none" id="preview-image"/>
+            <img id="preview-image"/>
         </div>
-        <br>
+
+        <br/>
+
+        <span id="submit-btn-wrapper" class="btn-wrapper">
+            <input class="inputLink" type="submit" id="submit-btn" hidden/>
+            <label for="submit-btn">Submit</label>
+        </span>
+
         <script>
+
             var previewImage = function(event) {
                 var preview = document.getElementById('preview-image');
                 preview.src = URL.createObjectURL(event.target.files[0]);
                 preview.style.display = "block";
+                preview.style.marginLeft = "auto";
+                preview.style.marginRight = "auto";
+
+                var submitBtn = document.getElementById('submit-btn-wrapper');
+                submitBtn.style.display = "block";
             };
+
         </script>
+
+        
         
 	</form>
 </body>

@@ -48,6 +48,17 @@ p {
 #submit-btn-wrapper {
     color: white;
     background-color: #46b881;
+    display: none;
+}
+
+form {
+    text-align: center;
+    justify-content: center;
+}
+
+#preview-image {
+    height: 240px;
+    display: none;
 }
 
 label {
