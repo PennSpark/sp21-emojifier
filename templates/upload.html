@@ -4,8 +4,8 @@
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/upload.css') }}">
 </head>
 <body>
-	<h1> Emoji Classifier</h1>
-	<h2>
+	<h1> Emoji Classifier</h1><br/>
+	<p>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 			{% for message in messages %}
@@ -15,35 +15,37 @@
 			Select an image to upload
 		{% endif %}
 		{% endwith %}
-	</h2>
+    </p>
+    <br/>
 	{% if filename %}
 		<div>
 			<p id="emoji">{{ value }}</p>
 		</div>
+        <br/>
 	{% endif %}
 	<form method="post" action="/" enctype="multipart/form-data">
-		<dl>
-			<p>
-				<input type="file" name="file" autocomplete="off" id="actual-btn" onchange="previewImage(event)" hidden>
-				<label for="actual-btn">Choose File</label>
-			</p>
-		</dl>
-		<p>
-			<form>
-				<input class="inputLink" type="submit"></input>
-			</form>
-			<div>
-				<img style="height:100px;width:100px;display:none" id="preview-image"/>
-			</div>
-			<br>
-			<script>
-				var previewImage = function(event) {
-					var preview = document.getElementById('preview-image');
-					preview.src = URL.createObjectURL(event.target.files[0]);
-					preview.style.display = "block";
-				};
-			</script>
-			
-		</p>
+        <div>
+            <span id="choose-img-btn-wrapper" class="btn-wrapper">
+                <input type="file" name="file" autocomplete="off" id="choose-img-btn" onchange="previewImage(event)" hidden>
+                <label for="choose-img-btn">Choose File</label>
+            </span>
+            <span id="submit-btn-wrapper" class="btn-wrapper">
+                <input class="inputLink" type="submit" id="submit-btn" hidden/>
+                <label for="submit-btn">Submit</label>
+            </span>    
+        </div>
+    
+        <div>
+            <img style="height:25vh;display:none" id="preview-image"/>
+        </div>
+        <br>
+        <script>
+            var previewImage = function(event) {
+                var preview = document.getElementById('preview-image');
+                preview.src = URL.createObjectURL(event.target.files[0]);
+                preview.style.display = "block";
+            };
+        </script>
+        
 	</form>
 </body>
