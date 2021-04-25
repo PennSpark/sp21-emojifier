@@ -2,41 +2,48 @@
 <head>
 	<title>Emoji Classifier</title>
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/upload.css') }}">
-	<!-- <meta charset="UTF-8"> -->
 </head>
 <body>
 	<h1> Emoji Classifier</h1>
-	<h2>Select a file to upload (Will be changed to webcam soon)</h2>
-	<p>
+	<h2>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
-			<ul>
 			{% for message in messages %}
-			<li>{{ message }}</li>
+				{{ message }}
 			{% endfor %}
-			</ul>
+		{% else %}
+			Select an image to upload
 		{% endif %}
 		{% endwith %}
-	</p>
+	</h2>
 	{% if filename %}
 		<div>
-			<img src="{{ url_for('display_image', filename=filename) }}">
-			<p>{{ value }}</p>
+			<p id="emoji">{{ value }}</p>
 		</div>
 	{% endif %}
 	<form method="post" action="/" enctype="multipart/form-data">
 		<dl>
 			<p>
-				<input type="file" name="file" autocomplete="off" id="actual-btn" hidden>
+				<input type="file" name="file" autocomplete="off" id="actual-btn" onchange="previewImage(event)" hidden>
 				<label for="actual-btn">Choose File</label>
-				<!-- <label for="file-upload" class="custom-file-upload">
-					Custom Upload
-				</label>
-				<input id="file-upload" type="file"/> -->
 			</p>
 		</dl>
 		<p>
-			<input class="inputLink" type="submit" value="Submit">
+			<form>
+				<input class="inputLink" type="submit"></input>
+			</form>
+			<div>
+				<img style="height:100px;width:100px;display:none" id="preview-image"/>
+			</div>
+			<br>
+			<script>
+				var previewImage = function(event) {
+					var preview = document.getElementById('preview-image');
+					preview.src = URL.createObjectURL(event.target.files[0]);
+					preview.style.display = "block";
+				};
+			</script>
+			
 		</p>
 	</form>
 </body>
