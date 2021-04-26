@@ -16,7 +16,7 @@ from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
 model = tf.keras.models.load_model('saved_model/my_model')
-class_names = ['angry', 'disgusted', 'fearful', 'happy', 'neutral', 'sad', 'surprised']
+class_names = ['angry', 'happy', 'neutral', 'sad']
 img_height = 48
 img_width = 48
 @app.route('/')
@@ -57,14 +57,8 @@ def upload_image():
 			emoji = "😢"
 		elif output == "neutral":
 			emoji = "😐"
-		elif output == "angry":
-			emoji = "😡"
-		elif output == "fearful":
-			emoji = "😨"
-		elif output == "surprised":
-			emoji = "😮"
 		else:
-			emoji = "🤢"
+			emoji = "😡"
 		return render_template('upload.html', filename=filename, value=emoji)
 
 @app.route('/display/<filename>')
