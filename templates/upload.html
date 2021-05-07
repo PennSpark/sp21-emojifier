@@ -18,8 +18,10 @@
     </p>
     <br/>
 	{% if filename %}
-		<div>
-			<p id="emoji">{{ value }}</p>
+		<div id="emoji" style="text-align: center">
+            <p>You look like this emoji</p>
+			<p id="emoji">{{ emoji }}</p>
+            <p><i>with {{ accuracy }} % confidence.</i></p>
 		</div>
         <br/>
 	{% endif %}

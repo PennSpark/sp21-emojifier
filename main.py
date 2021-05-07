@@ -49,17 +49,21 @@ def upload_image():
 			"This image most likely belongs to {} with a {:.2f} percent confidence."
 			.format(class_names[np.argmax(score)], 100 * np.max(score))
 		)
-		flash('You as an emoji:')
+		# flash('You as an emoji:')
 		output = class_names[np.argmax(score)]
+		accuracy = round(100 * np.max(score), 2)
+
 		if output == "happy":
 			emoji = "😄"
 		elif output == "sad":
 			emoji = "😢"
 		elif output == "neutral":
 			emoji = "😐"
-		else:
+		elif output == "angry":
 			emoji = "😡"
-		return render_template('upload.html', filename=filename, value=emoji)
+		else:
+			emoji = "❓"
+		return render_template('upload.html', filename=filename, emoji=emoji, accuracy=accuracy)
 
 @app.route('/display/<filename>')
 def display_image(filename):
